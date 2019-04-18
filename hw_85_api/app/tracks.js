@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     if (req.query.album) {
-        Track.find({album: req.query.album})
+        Track.find({album: req.query.album}).sort({number: 1}).populate('album')
             .then(result => {
                 if (result) return res.send(result);
                 res.sendStatus(404)
