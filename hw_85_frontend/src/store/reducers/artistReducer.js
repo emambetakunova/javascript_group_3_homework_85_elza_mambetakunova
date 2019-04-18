@@ -6,7 +6,7 @@ const initialState = {
     error: null
 };
 
-const userReducer = (state = initialState, action) => {
+const artistReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_ARTISTS_SUCCESS:
             return {
@@ -27,4 +27,4 @@ const userReducer = (state = initialState, action) => {
             return state;
     }
 };
-export default userReducer;
+export default artistReducer;
