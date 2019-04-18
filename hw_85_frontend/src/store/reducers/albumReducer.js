@@ -24,7 +24,7 @@ const albumReducer = (state = initialState, action) => {
             return {
                 ...state,
                 albumId: action.data,
-                artistAlbum: action.data.name.name
+                artistAlbum: action.data.artist.name
             };
         default:
             return state;
