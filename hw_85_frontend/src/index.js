@@ -10,12 +10,16 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import artistReducer from './store/reducers/artistReducer';
+import albumReducer from "./store/reducers/albumReducer";
+import trackReducer from "./store/reducers/trackReducer";
 
 const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
     router: connectRouter(history),
-    artist: artistReducer
+    artist: artistReducer,
+    album: albumReducer,
+    track: trackReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
