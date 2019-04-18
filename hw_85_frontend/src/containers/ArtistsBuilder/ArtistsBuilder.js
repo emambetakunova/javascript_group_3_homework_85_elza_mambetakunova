@@ -24,7 +24,8 @@ class ArtistsBuilder extends Component {
                     <ArtistComponent
                         key={artist._id}
                         image={artist.image}
-                        artist={artist.name}
+                        name={artist.name}
+                        description={artist.description}
                         onClick={() => this.getArtist(artist._id)}/>
                 ))}
             </Fragment>

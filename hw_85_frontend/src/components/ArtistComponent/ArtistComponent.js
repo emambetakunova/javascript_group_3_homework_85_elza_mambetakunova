@@ -1,16 +1,21 @@
 import React from 'react';
-import {Card, CardBody} from "reactstrap";
+import {Col, Row, Card, CardBody, CardTitle} from "reactstrap";
 
 import ArtistThumbnail from "../ArtistThumbnail/ArtistThumbnail";
 
 const ArtistComponent = props => {
     return (
-        <Card color="info" className="mb-5" onClick={props.onClick}>
-            <CardBody>
-                <ArtistThumbnail image={props.image}/>
-                <strong className="ml-5">{props.artist}</strong>
-            </CardBody>
-        </Card>
+        <Row>
+            <Col xs="6">
+                <Card color="info" className="mb-5" onClick={props.onClick}>
+                    <CardBody>
+                        <ArtistThumbnail image={props.image}/>
+                        <CardTitle><strong>{props.name}</strong></CardTitle>
+                        <strong>Full name: </strong>{props.description}
+                    </CardBody>
+                </Card>
+            </Col>
+        </Row>
     );
 };
 
