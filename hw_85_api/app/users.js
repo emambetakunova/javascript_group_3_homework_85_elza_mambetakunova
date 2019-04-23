@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
 
     try {
         await user.save();
-        return res.send({token: user.token})
+        return res.send({token: user.token, username: user.username})
     } catch (error) {
         return res.status(400).send(error)
     }
@@ -36,7 +36,7 @@ router.post('/sessions', async (req, res) => {
 
     await user.save();
 
-    res.send({token: user.token})
+    res.send({token: user.token, username: user.username})
 });
 
 
