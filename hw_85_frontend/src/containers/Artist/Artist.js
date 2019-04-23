@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import {CardColumns} from "reactstrap";
 
-import {fetchArtistsId} from "../../store/actions/artistAction";
+import {fetchArtistsId} from "../../store/actions/artistActions";
 import {fetchAlbumsArtist} from "../../store/actions/albumActions";
 
 import AlbumComponent from "../../components/AlbumComponent/AlbumComponent";

@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import {fetchArtists} from "../../store/actions/artistAction";
+import {fetchArtists} from "../../store/actions/artistActions";
 
 import ArtistComponent from "../../components/ArtistComponent/ArtistComponent";
 
