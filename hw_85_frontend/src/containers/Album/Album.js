@@ -4,6 +4,7 @@ import {CardColumns} from "reactstrap";
 
 import {fetchTracks} from "../../store/actions/trackActions";
 import {fetchAlbumsId} from "../../store/actions/albumActions";
+import {addToTrackHistory} from "../../store/actions/trackHistoryActions"
 
 import TrackComponent from "../../components/TrackComponent/TrackComponent";
 
@@ -15,20 +16,27 @@ class Album extends Component {
         this.props.fetchAlbumsId(id);
     }
 
+    goTrackHistory = (id) => {
+        this.props.addToTrackHistory({track: id});
+    };
+
     render() {
         return (
             <Fragment>
                 <h3>{this.props.artistAlbum}</h3>
-                <CardColumns>
-                    {this.props.tracks.map(track => (
-                        <TrackComponent
-                            key={track._id}
-                            title={track.title}
-                            number={track.number}
-                            length={track.length}
-                        />
-                    ))}
-                </CardColumns>
+                {this.props.tracks ? <CardColumns>
+                    {this.props.tracks.map(track => {
+                        return (
+                            <TrackComponent
+                                key={track._id}
+                                title={track.title}
+                                number={track.number}
+                                length={track.length}
+                                onClick={() => this.goTrackHistory(track._id)}
+                            />
+                        )
+                    })}
+                </CardColumns> : null}
             </Fragment>
         );
     }
@@ -45,7 +53,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchTracks: (id) => dispatch(fetchTracks(id)),
-        fetchAlbumsId: (id) => dispatch(fetchAlbumsId(id))
+        fetchAlbumsId: (id) => dispatch(fetchAlbumsId(id)),
+        addToTrackHistory: (id) => dispatch(addToTrackHistory(id))
     }
 };
 
