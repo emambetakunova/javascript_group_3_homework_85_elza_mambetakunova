@@ -37,7 +37,7 @@ FormElement.propTypes = {
     onChange: PropTypes.func.isRequired,
     required: PropTypes.bool,
     placeholder: PropTypes.string,
-    autocomplete: PropTypes.string
+    autoComplete: PropTypes.string
 
 };
 
