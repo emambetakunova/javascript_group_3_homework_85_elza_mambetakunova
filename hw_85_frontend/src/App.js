@@ -6,6 +6,7 @@ import Container from "reactstrap/es/Container";
 
 import Toolbar from "./components/UI/Toolbar/Toolbar";
 import Register from "./containers/Register/Register";
+import TrackHistory from "./containers/TrackHistory/TrackHistory";
 import Login from "./containers/Login/Login";
 import ArtistsBuilder from "./containers/ArtistsBuilder/ArtistsBuilder";
 import Artist from "./containers/Artist/Artist";
@@ -29,6 +30,7 @@ class App extends Component {
                         <Route path="/albums/:id" component={Album}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/login" exact component={Login}/>
+                        <Route path="/trackHistory" exact component={TrackHistory}/>
                     </Switch>
                 </Container>
             </Fragment>
