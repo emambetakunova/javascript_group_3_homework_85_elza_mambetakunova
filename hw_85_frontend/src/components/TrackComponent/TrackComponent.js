@@ -3,7 +3,7 @@ import {Card, CardBody, CardTitle, CardSubtitle} from "reactstrap";
 
 const TrackComponent = props => {
     return (
-        <Card color="info" className="mb-5" onClick={props.onClick}>
+        <Card color="info" className="mb-5">
             <CardBody className="ml-5">
                 <CardTitle><strong>Title: </strong>{props.title}</CardTitle>
                 <CardSubtitle><strong>Track number: </strong>{props.number}</CardSubtitle>
