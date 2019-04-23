@@ -12,6 +12,29 @@ import App from './App';
 import artistReducer from './store/reducers/artistReducer';
 import albumReducer from "./store/reducers/albumReducer";
 import trackReducer from "./store/reducers/trackReducer";
+import userReducer from "./store/reducers/userReducer";
+
+
+const saveToLocalStorage = (state) => {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem('state', serializedState);
+    } catch (e) {
+        console.log('Could not save state');
+    }
+};
+
+const loadFromLocalStorage = () => {
+    try {
+        const serializedState = localStorage.getItem('state');
+        if (serializedState === null) {
+            return undefined;
+        }
+        return JSON.parse(serializedState);
+    } catch (e) {
+        return undefined;
+    }
+};
 
 const history = createBrowserHistory();
 
@@ -19,7 +42,8 @@ const rootReducer = combineReducers({
     router: connectRouter(history),
     artist: artistReducer,
     album: albumReducer,
-    track: trackReducer
+    track: trackReducer,
+    user: userReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -31,7 +55,18 @@ const middleware = [
 
 const enhancers = composeEnhancers(applyMiddleware(...middleware));
 
-const store = createStore(rootReducer, enhancers);
+const persistedState = loadFromLocalStorage();
+
+const store = createStore(rootReducer, persistedState, enhancers);
+
+store.subscribe(() => {
+    saveToLocalStorage({
+        users: {
+            user: store.getState().user.user
+        }
+
+    })
+});
 
 const app = (
     <Provider store={store}>
