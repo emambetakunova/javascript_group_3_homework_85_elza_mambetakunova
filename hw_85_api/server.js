@@ -23,7 +23,7 @@ mongoose.connect(config.dbUrl, config.mongoOptions).then(() => {
     app.use('/albums', albums);
     app.use('/tracks', tracks);
     app.use('/users', users);
-    app.use('/track_history', trackHistory);
+    app.use('/trackHistory', trackHistory);
 
     app.listen(port, () => {
         console.log(`Server started on ${port} port`);
