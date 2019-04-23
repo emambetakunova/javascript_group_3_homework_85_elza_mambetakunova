@@ -22,8 +22,8 @@ export const logoutUser = () => {
 export const registerUser = userData => {
     return dispatch => {
         return axios.post('/users', userData).then(
-            () => {
-                dispatch(registerUserSuccess());
+            (response) => {
+                dispatch(registerUserSuccess(response.data));
                 dispatch(push('/'));
             },
             error => {
@@ -42,7 +42,7 @@ export const loginUser = userData => {
     return dispatch => {
         return axios.post('/users/sessions', userData).then(
             response => {
-                dispatch(loginUserSuccess(response.data.user));
+                dispatch(loginUserSuccess(response.data));
                 dispatch(push('/'));
             },
             error => {

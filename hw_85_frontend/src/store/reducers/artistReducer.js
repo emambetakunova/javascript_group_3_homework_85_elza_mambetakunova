@@ -1,4 +1,4 @@
-import {FETCH_ARTISTS_SUCCESS, FETCH_ARTISTS_FAILURE, FETCH_ARTIST_ID_SUCCESS } from "../actions/artistAction";
+import {FETCH_ARTISTS_SUCCESS, FETCH_ARTISTS_FAILURE, FETCH_ARTIST_ID_SUCCESS } from "../actions/artistActions";
 
 const initialState = {
     artists: [],

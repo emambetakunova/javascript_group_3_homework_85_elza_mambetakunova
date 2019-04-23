@@ -1,7 +1,7 @@
 import {FETCH_TRACKS_SUCCESS, FETCH_TRACKS_FAILURE} from "../actions/trackActions";
 
 const initialState = {
-    tracks: [],
+    tracks: null,
     error: null
 };
 
