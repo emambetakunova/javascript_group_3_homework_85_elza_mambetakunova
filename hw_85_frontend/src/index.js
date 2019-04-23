@@ -12,6 +12,7 @@ import App from './App';
 import artistReducer from './store/reducers/artistReducer';
 import albumReducer from "./store/reducers/albumReducer";
 import trackReducer from "./store/reducers/trackReducer";
+import trackHistoryReducer from "./store/reducers/trackHistoryReducer";
 import userReducer from "./store/reducers/userReducer";
 
 
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
     artist: artistReducer,
     album: albumReducer,
     track: trackReducer,
+    trackHistory: trackHistoryReducer,
     user: userReducer
 });
 
@@ -61,7 +63,7 @@ const store = createStore(rootReducer, persistedState, enhancers);
 
 store.subscribe(() => {
     saveToLocalStorage({
-        users: {
+        user: {
             user: store.getState().user.user
         }
 
