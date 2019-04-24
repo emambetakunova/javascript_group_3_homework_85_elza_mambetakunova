@@ -23,9 +23,11 @@ class Album extends Component {
     render() {
         return (
             <Fragment>
-                <h3>{this.props.artistAlbum}</h3>
+                <h3><strong>Artist: </strong>{this.props.artistAlbum}</h3>
+                <h3><strong>Album: </strong>{this.props.albumId.title}</h3>
                 {this.props.tracks ? <CardColumns>
                     {this.props.tracks.map(track => {
+                        console.log(track);
                         return (
                             <TrackComponent
                                 key={track._id}
@@ -45,7 +47,7 @@ class Album extends Component {
 const mapStateToProps = state => {
     return {
         tracks: state.track.tracks,
-        albums: state.album.albums,
+        albumId: state.album.albumId,
         artistAlbum: state.album.artistAlbum
     }
 };
