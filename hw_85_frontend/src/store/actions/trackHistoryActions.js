@@ -24,7 +24,6 @@ export const fetchTrackHistory = () => {
             const header = {headers: {'Authorization': user.token}};
             return axios.get('/trackHistory', header).then(
                 response => {
-                    console.log(response);
                     dispatch(fetchTrackHistorySuccess(response.data))
                 },
                 error => {dispatch(fetchTrackHistoryFailure(error))}
@@ -35,14 +34,22 @@ export const fetchTrackHistory = () => {
 };
 
 export const addToTrackHistory = trackData => {
-    console.log(trackData);
     return (dispatch, getState) => {
-        let token = getState().user.user.token;
-        const header = {headers: {'Authorization': token}};
+        const user = getState().user.user;
+        if(!user) {
+            dispatch(push('/login'))
+        }else {
+            let token = getState().user.user.token;
+            const header = {headers: {'Authorization': token}};
 
-        return axios.post('/trackHistory', trackData, header).then(
-            () => {dispatch(addTrackSuccess())},
-            error => {dispatch(addTrackFailure(error))}
-        )
+            return axios.post('/trackHistory', trackData, header).then(
+                () => {
+                    dispatch(addTrackSuccess())
+                },
+                error => {
+                    dispatch(addTrackFailure(error))
+                }
+            )
+        }
     }
 };
