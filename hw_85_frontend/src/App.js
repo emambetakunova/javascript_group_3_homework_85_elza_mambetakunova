@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Switch, Route, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {logoutUser} from "./store/actions/userActions";
+import {logOutUser} from "./store/actions/userActions";
 import Container from "reactstrap/es/Container";
 
 import Toolbar from "./components/UI/Toolbar/Toolbar";
@@ -20,7 +20,7 @@ class App extends Component {
                 <header>
                     <Toolbar
                         user={this.props.user}
-                        logout={this.props.logoutUser}
+                        logout={this.props.logOutUser}
                     />
                 </header>
                 <Container className="mt-5">
@@ -43,6 +43,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    logoutUser: () => dispatch(logoutUser())
+    logOutUser: () => dispatch(logOutUser())
 });
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
