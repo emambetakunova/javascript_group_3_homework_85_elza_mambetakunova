@@ -27,7 +27,6 @@ class Album extends Component {
                 <h3><strong>Album: </strong>{this.props.albumId.title}</h3>
                 {this.props.tracks ? <CardColumns>
                     {this.props.tracks.map(track => {
-                        console.log(track);
                         return (
                             <TrackComponent
                                 key={track._id}
