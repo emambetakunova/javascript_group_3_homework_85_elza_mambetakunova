@@ -12,7 +12,6 @@ class TrackHistory extends Component {
     }
 
     render() {
-        console.log(this.props.trackHistory);
         return (
             <Fragment>
                 <h1>Track History</h1>
