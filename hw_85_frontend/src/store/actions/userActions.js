@@ -15,8 +15,13 @@ const registerUserFailure = error => ({type: REGISTER_USER_FAILURE, error});
 const loginUserSuccess = user => ({type: LOGIN_USER_SUCCESS, user});
 const loginUserFailure = error => ({type: LOGIN_USER_FAILURE, error});
 
-export const logoutUser = () => {
-    return {type: LOGOUT_USER};
+const logoutUser = () => ({type: LOGOUT_USER});
+
+export const logOutUser = () => {
+    return dispatch => {
+        dispatch(logoutUser());
+        dispatch(push('/'));
+    };
 };
 
 export const registerUser = userData => {
