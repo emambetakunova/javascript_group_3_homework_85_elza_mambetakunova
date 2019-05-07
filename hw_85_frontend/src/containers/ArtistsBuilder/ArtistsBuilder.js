@@ -21,7 +21,7 @@ class ArtistsBuilder extends Component {
     };
 
     goPublish = id => {
-        this.props.publishedArtist(id)
+        this.props.publishedArtist(id);
     };
 
     render() {

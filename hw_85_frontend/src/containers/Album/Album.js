@@ -25,14 +25,16 @@ class Album extends Component {
     };
 
     goPublish = id => {
-        this.props.publishedTrack(id)
+        this.props.publishedTrack(id);
+        this.props.history.push({
+            pathname: '/'
+        })
     };
 
     render() {
-        console.log(this.props.tracks);
         return (
             <Fragment>
-                {/*<h3><strong>Artist: </strong>{this.props.artistAlbum}</h3>*/}
+                <h3><strong>Artist: </strong>{this.props.artistAlbum}</h3>
                 <h3><strong>Album: </strong>{this.props.albumId.title}</h3>
                 {this.props.tracks ? <CardColumns>
                     {this.props.tracks.map(track => {
@@ -59,6 +61,7 @@ class Album extends Component {
 const mapStateToProps = state => {
     return {
         tracks: state.track.tracks,
+        artists: state.artist.artists,
         user: state.user.user,
         albumId: state.album.albumId,
         artistAlbum: state.album.artistAlbum

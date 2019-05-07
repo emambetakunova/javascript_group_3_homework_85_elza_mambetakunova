@@ -6,7 +6,6 @@ class TrackForm extends Component {
     state = {
         title: '',
         length: '',
-        artist: '',
         album: ''
     };
 
@@ -25,18 +24,6 @@ class TrackForm extends Component {
     render() {
         return (
             <Form onSubmit={this.submitFormHandler}>
-                <FormElement
-                    propertyName="artist"
-                    title="Artist"
-                    type="select" required
-                    onChange={this.inputChangeHandler}
-                    value={this.state.artist}
-                >
-                    <option value="">Please select artist</option>
-                    {this.props.artists.map(artist => (
-                        <option key={artist._id} value={artist._id}>{artist.name}</option>
-                    ))}
-                </FormElement>
                 <FormElement
                     propertyName="album"
                     title="Album"

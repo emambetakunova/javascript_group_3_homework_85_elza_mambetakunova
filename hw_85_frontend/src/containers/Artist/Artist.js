@@ -26,11 +26,13 @@ class Artist extends Component {
     };
 
     goPublish = id => {
-        this.props.publishedAlbum(id)
+        this.props.publishedAlbum(id);
+        this.props.history.push({
+            pathname: '/'
+        })
     };
 
     render() {
-        console.log(this.props.albums);
         return (
             <Fragment>
                 <h3>{this.props.artists.name}</h3>
