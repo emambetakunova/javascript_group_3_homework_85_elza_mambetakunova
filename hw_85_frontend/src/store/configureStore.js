@@ -37,15 +37,15 @@ const store = createStore(rootReducer, persistedState, enhancers);
 
 store.subscribe(() => {
     saveState({
-        users: {
-            user: store.getState().users.user
+        user: {
+            user: store.getState().user.user
         }
     });
 });
 
 axios.interceptors.request.use(config => {
     try {
-        config.headers['Authorization'] = store.getState().users.user.token;
+        config.headers['Authorization'] = store.getState().user.user.token;
     } catch (e) {
         // do nothing, user is not logged in
     }
