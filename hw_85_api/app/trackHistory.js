@@ -1,5 +1,7 @@
 const express = require('express');
 const auth = require('../middleware/auth');
+const permit = require('../middleware/permit');
+
 const History = require('../models/TrackHistory');
 
 
@@ -14,7 +16,7 @@ router.get('/', auth, (req, res) => {
 });
 
 
-router.post('/', auth, async (req, res) => {
+router.post('/', [auth, permit('admin', 'user')], async (req, res) => {
     try {
         const trackHistory  = {
             user: req.user._id,
