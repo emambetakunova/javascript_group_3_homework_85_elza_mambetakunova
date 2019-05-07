@@ -24,12 +24,6 @@ const router = express.Router();
 
 router.get('/', tryAuth, (req, res) => {
     let criteria = {published: true};
-    if (req.query.artist) {
-        criteria = {
-            artist: req.query.artist,
-            published: true
-        }
-    }
     if (req.user && req.query.artist) {
         criteria = {
             artist: req.query.artist,
@@ -49,7 +43,7 @@ router.get('/', tryAuth, (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Album.findById(req.params.id)
+    Album.findById(req.params.id).populate('artist')
         .then(album => res.send(album))
         .catch(() => res.sendStatus(500))
 });
