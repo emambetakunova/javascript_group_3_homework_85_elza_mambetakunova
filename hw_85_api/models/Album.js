@@ -10,9 +10,17 @@ const AlbumSchema = new Schema({
         type: String, required: true
     },
     image: String,
+    published: {
+        type: Boolean, default: false
+    },
     artist: {
         type: Schema.Types.ObjectId,
         ref: 'Artist',
+        required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 });

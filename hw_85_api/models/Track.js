@@ -12,9 +12,17 @@ const TrackSchema = new Schema({
     number: {
         type: Number, required: true
     },
+    published: {
+        type: Boolean, default: false
+    },
     album: {
         type: Schema.Types.ObjectId,
         ref: 'Album',
+        required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 });
