@@ -7,6 +7,15 @@ const UserMenu = ({user, logout}) => (
         <NavItem>
             <NavLink tag={RouterNavLink} to="/trackHistory" exact>TrackHistory</NavLink>
         </NavItem>
+        <NavItem>
+            <NavLink tag={RouterNavLink} to="/artists/new" exact>Add new artist</NavLink>
+        </NavItem>
+        <NavItem>
+            <NavLink tag={RouterNavLink} to="/albums/new" exact>Add new album</NavLink>
+        </NavItem>
+        <NavItem>
+            <NavLink tag={RouterNavLink} to="/tracks/new" exact>Add new track</NavLink>
+        </NavItem>
         <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
                 Hello, {user.username}
