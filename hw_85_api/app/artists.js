@@ -44,7 +44,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', [auth, permit('user', 'admin'), upload.single('image')], (req, res) => {
-    console.log(req);
     const artistData = req.body;
     if (req.file) {
         artistData.image = req.file.filename;
@@ -73,8 +72,8 @@ router.post('/:id/toggle_published', [auth, permit('admin')], async (req, res) =
         .catch(error => res.sendStatus(400).send(error));
 });
 
-router.delete('/:id/delete',  [auth, permit('admin')], async (req, res) => {
-    Artist.findByIdAndDelete(req.params.id)
+router.delete('/:id',  [auth, permit('admin')], (req, res) => {
+    Artist.deleteOne({_id: req.params.id})
         .then(() => res.send({message: 'success'}))
         .catch(() => res.sendStatus(500).send(error))
 });
