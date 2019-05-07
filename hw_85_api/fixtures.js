@@ -30,12 +30,14 @@ const run = async () => {
             name: 'Adele',
             description: 'Adele Laurie Blue Adkins',
             image: 'adele.jpg',
+            published: true,
             user: users[0]._id
         },
         {
             name: 'Michael Jackson',
             description: 'Michael Joseph Jackson',
             image: 'michael.jpg',
+            published: true,
             user: users[0]._id
         }
     );
@@ -46,6 +48,7 @@ const run = async () => {
             release: 2011,
             artist: artist[0]._id,
             image: 'adele21.jpg',
+            published: true,
             user: users[0]._id
         },
         {
@@ -77,6 +80,7 @@ const run = async () => {
             length: 3,
             number: 1,
             album: album[0]._id,
+            published: true,
             user: users[0]._id
         },
         {
@@ -91,6 +95,7 @@ const run = async () => {
             length: 3,
             number: 3,
             album: album[1]._id,
+            published: true,
             user: users[0]._id
         },
         {
