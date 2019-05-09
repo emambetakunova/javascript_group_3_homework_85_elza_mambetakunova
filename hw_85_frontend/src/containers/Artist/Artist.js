@@ -6,6 +6,7 @@ import {fetchArtistsId} from "../../store/actions/artistActions";
 import {fetchAlbums, deleteAlbum, fetchAlbumsArtist, publishedAlbum} from "../../store/actions/albumActions";
 
 import AlbumComponent from "../../components/AlbumComponent/AlbumComponent";
+import ArtistComponent from "../../components/ArtistComponent/ArtistComponent";
 
 
 class Artist extends Component {
@@ -36,22 +37,29 @@ class Artist extends Component {
         const artistAlbums = this.props.albums.filter(album =>
             album.artist._id === this.props.match.params.id
         );
+
+        let albums = this.props.albums;
+        if (albums.length === 0) {
+            albums = <h2>Add new albums</h2>;
+        } else {
+            albums = artistAlbums.map(album => (
+                <AlbumComponent
+                    user={this.props.user}
+                    delete={() => this.goDelete(album._id)}
+                    published={this.changePublishStatus}
+                    key={album._id}
+                    image={album.image}
+                    title={album.title}
+                    release={album.release}
+                    album={album}
+                    onClick={() => this.getAlBumId(album._id)}/>
+            ));
+        }
         return (
             <Fragment>
                 <h3>{this.props.artists.name}</h3>
                 <CardColumns>
-                    {artistAlbums.map(album => (
-                        <AlbumComponent
-                            user={this.props.user}
-                            delete={() => this.goDelete(album._id)}
-                            published={this.changePublishStatus}
-                            key={album._id}
-                            image={album.image}
-                            title={album.title}
-                            release={album.release}
-                            album={album}
-                            onClick={() => this.getAlBumId(album._id)}/>
-                    ))}
+                    {albums}
                 </CardColumns>
             </Fragment>
         );

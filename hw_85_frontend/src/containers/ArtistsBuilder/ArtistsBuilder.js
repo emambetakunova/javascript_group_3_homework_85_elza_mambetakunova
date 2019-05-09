@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {fetchArtists, deleteArtist, publishedArtist} from "../../store/actions/artistActions";
 
 import ArtistComponent from "../../components/ArtistComponent/ArtistComponent";
+import {CardColumns} from "reactstrap";
 
 class ArtistsBuilder extends Component {
     componentDidMount() {
@@ -25,21 +26,29 @@ class ArtistsBuilder extends Component {
     };
 
     render() {
+        let artists = this.props.artists;
+        if (artists.length === 0) {
+            artists = <h2>Add new artists</h2>;
+        } else {
+            artists = this.props.artists.map(artist => (
+                <ArtistComponent
+                    user={this.props.user}
+                    delete={() => this.goDelete(artist._id)}
+                    published={this.changePublishStatus}
+                    key={artist._id}
+                    image={artist.image}
+                    name={artist.name}
+                    artist={artist}
+                    description={artist.description}
+                    onClick={() => this.getArtist(artist._id)}/>
+            ));
+        }
         return (
             <Fragment>
                 <h1>Artists</h1>
-                {this.props.artists.map(artist => (
-                    <ArtistComponent
-                        user={this.props.user}
-                        delete={() => this.goDelete(artist._id)}
-                        published={this.changePublishStatus}
-                        key={artist._id}
-                        image={artist.image}
-                        name={artist.name}
-                        artist={artist}
-                        description={artist.description}
-                        onClick={() => this.getArtist(artist._id)}/>
-                ))}
+                <CardColumns>
+                {artists}
+                </CardColumns>
             </Fragment>
         );
     }
