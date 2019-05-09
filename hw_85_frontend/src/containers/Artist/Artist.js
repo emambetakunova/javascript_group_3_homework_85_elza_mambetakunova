@@ -33,11 +33,14 @@ class Artist extends Component {
     };
 
     render() {
+        const artistAlbums = this.props.albums.filter(album =>
+            album.artist._id === this.props.match.params.id
+        );
         return (
             <Fragment>
                 <h3>{this.props.artists.name}</h3>
                 <CardColumns>
-                    {this.props.albums.map(album => (
+                    {artistAlbums.map(album => (
                         <AlbumComponent
                             user={this.props.user}
                             delete={() => this.goDelete(album._id)}
