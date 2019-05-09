@@ -29,7 +29,6 @@ class Album extends Component {
     };
 
     render() {
-        console.log(this.props.tracks);
         return (
             <Fragment>
                 <h3><strong>Artist: </strong>{this.props.artistAlbum}</h3>
