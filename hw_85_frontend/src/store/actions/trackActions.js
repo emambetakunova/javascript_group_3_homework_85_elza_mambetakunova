@@ -23,7 +23,7 @@ const deleteTrackFailure = () => ({type: DELETE_TRACK_FAILURE});
 
 const createTrackSuccess = () => ({type: CREATE_TRACK_SUCCESS});
 
-const publishedTrackSuccess = () => ({type: PUBLISH_TRACK_SUCCESS});
+const publishedTrackSuccess = (track) => ({type: PUBLISH_TRACK_SUCCESS, track});
 
 export const fetchTracks = (id) => {
     return dispatch => {
@@ -65,7 +65,7 @@ export const createTrack = trackData => {
 export const publishedTrack = id => {
     return dispatch => {
         return axios.post('/tracks/' + id + '/toggle_published').then(
-            () => dispatch(publishedTrackSuccess())
+            (result) => dispatch(publishedTrackSuccess(result.data))
         );
     };
 };

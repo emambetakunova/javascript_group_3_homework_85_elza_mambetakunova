@@ -27,7 +27,7 @@ const deleteAlbumFailure = () => ({type: DELETE_ALBUM_FAILURE});
 
 const createAlbumSuccess = () => ({type: CREATE_ALBUM_SUCCESS});
 
-const publishedAlbumSuccess = () => ({type: PUBLISH_ALBUM_SUCCESS});
+const publishedAlbumSuccess = (album) => ({type: PUBLISH_ALBUM_SUCCESS, album});
 
 export const fetchAlbums = () => {
     return dispatch => {
@@ -87,7 +87,7 @@ export const createAlbum = albumData => {
 export const publishedAlbum = id => {
     return dispatch => {
         return axios.post('/albums/' + id + '/toggle_published').then(
-            () => dispatch(publishedAlbumSuccess())
+            (result) => dispatch(publishedAlbumSuccess(result.data))
         );
     };
 };

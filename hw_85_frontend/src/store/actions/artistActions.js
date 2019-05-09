@@ -21,7 +21,7 @@ const deleteArtistFailure = () => ({type: DELETE_ARTIST_FAILURE});
 
 const createArtistSuccess = () => ({type: CREATE_ARTIST_SUCCESS});
 
-const publishedArtistSuccess = () => ({type: PUBLISH_ARTIST_SUCCESS});
+const publishedArtistSuccess = (artist) => ({type: PUBLISH_ARTIST_SUCCESS, artist});
 
 export const fetchArtists = () => {
     return dispatch => {
@@ -72,7 +72,7 @@ export const createArtist = artistData => {
 export const publishedArtist = id => {
     return dispatch => {
         return axios.post('/artists/' + id + '/toggle_published').then(
-            () => dispatch(publishedArtistSuccess())
+            (result) => dispatch(publishedArtistSuccess(result.data))
         );
     };
 };

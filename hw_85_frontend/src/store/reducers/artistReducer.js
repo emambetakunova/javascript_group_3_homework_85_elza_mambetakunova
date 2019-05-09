@@ -1,4 +1,4 @@
-import {FETCH_ARTISTS_SUCCESS, FETCH_ARTISTS_FAILURE, FETCH_ARTIST_ID_SUCCESS } from "../actions/artistActions";
+import {FETCH_ARTISTS_SUCCESS, FETCH_ARTISTS_FAILURE, FETCH_ARTIST_ID_SUCCESS, PUBLISH_ARTIST_SUCCESS } from "../actions/artistActions";
 
 const initialState = {
     artists: [],
@@ -22,6 +22,16 @@ const artistReducer = (state = initialState, action) => {
             return {
                 ...state,
                 artistId: action.data
+            };
+        case PUBLISH_ARTIST_SUCCESS:
+            const idArtist = action.artist._id;
+            const isPublished = action.artist.published;
+            return {
+                ...state,
+                artists: state.artists.map(artist => artist._id === idArtist
+                    ? {...artist, published: isPublished}
+                    : artist
+                )
             };
         default:
             return state;
