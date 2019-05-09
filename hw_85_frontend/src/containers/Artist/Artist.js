@@ -25,11 +25,8 @@ class Artist extends Component {
         this.props.deleteAlbum(id)
     };
 
-    goPublish = id => {
+    changePublishStatus = id => {
         this.props.publishedAlbum(id);
-        this.props.history.push({
-            pathname: '/'
-        })
     };
 
     render() {
@@ -44,7 +41,7 @@ class Artist extends Component {
                         <AlbumComponent
                             user={this.props.user}
                             delete={() => this.goDelete(album._id)}
-                            published={this.goPublish}
+                            published={this.changePublishStatus}
                             key={album._id}
                             image={album.image}
                             title={album.title}

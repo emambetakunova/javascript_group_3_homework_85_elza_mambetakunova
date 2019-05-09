@@ -24,14 +24,12 @@ class Album extends Component {
         this.props.deleteTrack(id)
     };
 
-    goPublish = id => {
+    changePublishStatus = id => {
         this.props.publishedTrack(id);
-        this.props.history.push({
-            pathname: '/'
-        })
     };
 
     render() {
+        console.log(this.props.tracks);
         return (
             <Fragment>
                 <h3><strong>Artist: </strong>{this.props.artistAlbum}</h3>
@@ -42,7 +40,7 @@ class Album extends Component {
                             <TrackComponent
                                 user={this.props.user}
                                 delete={() => this.goDelete(track._id)}
-                                published={this.goPublish}
+                                published={this.changePublishStatus}
                                 key={track._id}
                                 title={track.title}
                                 number={track.number}

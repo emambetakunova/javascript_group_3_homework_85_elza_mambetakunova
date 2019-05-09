@@ -20,7 +20,7 @@ class ArtistsBuilder extends Component {
         this.props.deleteArtist(id)
     };
 
-    goPublish = id => {
+    changePublishStatus = id => {
         this.props.publishedArtist(id);
     };
 
@@ -32,7 +32,7 @@ class ArtistsBuilder extends Component {
                     <ArtistComponent
                         user={this.props.user}
                         delete={() => this.goDelete(artist._id)}
-                        published={this.goPublish}
+                        published={this.changePublishStatus}
                         key={artist._id}
                         image={artist.image}
                         name={artist.name}
