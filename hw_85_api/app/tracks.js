@@ -60,8 +60,8 @@ router.post('/:id/toggle_published', [auth, permit('admin')], async (req, res) =
 
 router.delete('/:id', [auth, permit('admin')], (req, res) => {
     Track.deleteOne({_id: req.params.id})
-        .then(() => res.send({message: 'success'}))
-        .catch(() => res.sendStatus(500).send(error))
+        .then(() => res.send({message: 'Successful'}))
+        .catch((error) => res.sendStatus(500).send(error))
 });
 
 module.exports = router;
