@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {CardColumns} from "reactstrap";
 
 import {fetchArtistsId} from "../../store/actions/artistActions";
-import {deleteAlbum, fetchAlbumsArtist, publishedAlbum} from "../../store/actions/albumActions";
+import {fetchAlbums, deleteAlbum, fetchAlbumsArtist, publishedAlbum} from "../../store/actions/albumActions";
 
 import AlbumComponent from "../../components/AlbumComponent/AlbumComponent";
 
@@ -22,7 +22,10 @@ class Artist extends Component {
     };
 
     goDelete = id => {
-        this.props.deleteAlbum(id)
+        this.props.deleteAlbum(id);
+        this.props.history.push({
+            pathname: '/'
+        })
     };
 
     changePublishStatus = id => {
@@ -67,6 +70,7 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchArtistsId: (id) => dispatch(fetchArtistsId(id)),
         fetchAlbumsArtist: id => dispatch(fetchAlbumsArtist(id)),
+        fetchAlbums: () => dispatch(fetchAlbums()),
         deleteAlbum: id => dispatch(deleteAlbum(id)),
         publishedAlbum: id => dispatch(publishedAlbum(id))
     }

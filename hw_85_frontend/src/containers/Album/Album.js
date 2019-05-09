@@ -21,7 +21,10 @@ class Album extends Component {
     };
 
     goDelete = id => {
-        this.props.deleteTrack(id)
+        this.props.deleteTrack(id);
+        this.props.history.push({
+            pathname: '/'
+        })
     };
 
     changePublishStatus = id => {

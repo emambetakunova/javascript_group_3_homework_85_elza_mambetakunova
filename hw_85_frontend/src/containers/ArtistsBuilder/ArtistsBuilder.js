@@ -4,7 +4,6 @@ import {fetchArtists, deleteArtist, publishedArtist} from "../../store/actions/a
 
 import ArtistComponent from "../../components/ArtistComponent/ArtistComponent";
 
-
 class ArtistsBuilder extends Component {
     componentDidMount() {
         this.props.fetchArtists();
@@ -18,6 +17,7 @@ class ArtistsBuilder extends Component {
 
     goDelete = id => {
         this.props.deleteArtist(id)
+            .then (() => this.props.fetchArtists())
     };
 
     changePublishStatus = id => {
