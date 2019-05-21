@@ -52,7 +52,8 @@ router.post('/', [auth, permit('user', 'admin'), upload.single('image')], (req, 
     }
     const artist = new Artist({
         name: req.body.name,
-        user: req.user._id
+        user: req.user._id,
+        image: req.file.filename
     });
     artist.save()
         .then(result => res.send(result))
