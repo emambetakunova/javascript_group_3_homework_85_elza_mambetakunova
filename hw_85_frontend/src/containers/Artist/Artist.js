@@ -6,7 +6,6 @@ import {fetchArtistsId} from "../../store/actions/artistActions";
 import {fetchAlbums, deleteAlbum, fetchAlbumsArtist, publishedAlbum} from "../../store/actions/albumActions";
 
 import AlbumComponent from "../../components/AlbumComponent/AlbumComponent";
-import ArtistComponent from "../../components/ArtistComponent/ArtistComponent";
 
 
 class Artist extends Component {
