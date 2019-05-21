@@ -21,6 +21,14 @@ const UserSchema = new Schema({
     },
     token: {
         type: String, required: true
+    },
+    avatarImage: String,
+    displayName: {
+        type: String,
+        required: true
+    },
+    facebookId: {
+        type: String
     }
 });
 
